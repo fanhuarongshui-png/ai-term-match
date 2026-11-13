@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 概念配对闯关 · 人工智能导论大作业</title>
+  <meta name="description" content="把《人工智能导论》课程里的 AI 术语与释义做成配对闯关游戏，含难度分级、连击计分、错题本与最高分存档。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ================= 标题 ================= -->
+  <header class="top">
+    <h1><span>AI 概念配对闯关</span></h1>
+    <p>把「AI 术语」和它的「释义」配成一对 —— 《人工智能导论》期末大作业 · 路线 B 学习类小游戏</p>
+  </header>
+
+  <!-- ================= 控制面板 ================= -->
+  <section class="panel" aria-label="游戏设置与计分">
+    <div class="controls">
+      <div class="levels" role="radiogroup" aria-label="难度选择">
+        <label>
+          <input type="radio" name="level" value="easy" checked>
+          <span>入门 6 组 · 70 秒</span>
+        </label>
+        <label>
+          <input type="radio" name="level" value="normal">
+          <span>进阶 8 组 · 85 秒</span>
+        </label>
+        <label>
+          <input type="radio" name="level" value="hard">
+          <span>挑战 10 组 · 100 秒</span>
+        </label>
+      </div>
+
+      <span class="spacer"></span>
+
+      <button class="btn" id="btn-start" type="button">开始游戏</button>
+      <button class="btn btn--ghost" id="btn-sound" type="button" aria-pressed="true">🔊 音效开</button>
+    </div>
+
+    <div class="hud" aria-live="polite">
+      <div class="hud__item"><b id="score">0</b><span>得分</span></div>
+      <div class="hud__item"><b id="combo">—</b><span>连击</span></div>
+      <div class="hud__item"><b id="progress">0 / 0</b><span>已配对</span></div>
+      <div class="hud__item"><b id="timer">0s</b><span>剩余时间</span></div>
+    </div>
+  </section>
+
+  <!-- ================= 牌面 ================= -->
+  <section class="panel" aria-label="配对区域">
+    <div class="board" id="board" aria-describedby="tip"></div>
+    <p class="foot" id="tip">
+      玩法：先点左侧<b style="color:#4f8cff">蓝色术语卡</b>，再点右侧<b style="color:#9fb2d6">灰色释义卡</b>（或反过来）——配对成功得分并累加连击，配对失败扣 15 分并清零连击。
+    </p>
+  </section>
+
+  <!-- ================= 最高分 ================= -->
+  <section class="panel" aria-label="最高分记录">
+    <div class="hud" style="margin-top:0">
+      <div class="hud__item"><b id="best-easy">0</b><span>入门最高分</span></div>
+      <div class="hud__item"><b id="best-normal">0</b><span>进阶最高分</span></div>
+      <div class="hud__item"><b id="best-hard">0</b><span>挑战最高分</span></div>
+    </div>
+  </section>
+
+  <!-- ================= 底部说明 ================= -->
+  <footer class="foot">
+    快捷键：<kbd>1</kbd> / <kbd>2</kbd> / <kbd>3</kbd> 切换难度 · <kbd>Enter</kbd> 开始或再来一局 ｜
+    题库共 51 组，全部依据课堂内容自建（非抓取）｜ 最高分与错题本保存在本机浏览器（localStorage），不上传任何数据
+  </footer>
+</div>
+
+<!-- ================= 结算浮层 ================= -->
+<div class="overlay is-hidden" id="overlay" role="dialog" aria-modal="true" aria-labelledby="overlay-title">
+  <div class="overlay__box">
+    <h2 id="overlay-title">结算</h2>
+    <p id="overlay-text"></p>
+
+    <ul class="stats" id="overlay-stats"></ul>
+
+    <div class="wrongbox is-hidden">
+      <h3>📕 错题本（下一局会优先抽到这些术语）</h3>
+      <ul id="wrong-list"></ul>
+    </div>
+
+    <div class="controls" style="justify-content:center">
+      <button class="btn" id="btn-restart" type="button">再来一局</button>
+    </div>
+  </div>
+</div>
+
+<script src="questions.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
