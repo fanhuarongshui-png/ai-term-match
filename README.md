@@ -1,5 +1,9 @@
 # AI 概念配对闯关（AI Term Match）
 
+> **🌐 在线试玩**：https://fanhuarongshui-png.github.io/ai-term-match/　
+> **📦 源码仓库**：https://github.com/fanhuarongshui-png/ai-term-match
+
+
 《人工智能导论》期末大作业 · 路线 B（学习类小游戏）
 作者：郭继辉　班级：软件 244　学号：202400406145
 
@@ -99,3 +103,4 @@ python -m http.server 8000
 - 代码、题库、文案均为本人本次作业原创；未使用任何第三方库、字体文件、图片或音频素材。
 - 音效由 Web Audio API 实时合成，不涉及音频素材授权。
 - 界面配色与图标（🔊📕🎉 等）使用系统 Emoji，无版权问题。
+
